@@ -6,6 +6,7 @@ dist*/
 shots/
 tools/probe.log
 vibe_images/
+HANDOFF.md
 
 # 参考仓库，仅本地保留（含自己的 .git）
 vendor/
