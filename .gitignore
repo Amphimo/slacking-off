@@ -1,0 +1,17 @@
+node_modules/
+dist*/
+
+# 本地草稿 / 记忆 / 探针输出
+.workbuddy/
+shots/
+tools/probe.log
+vibe_images/
+
+# 参考仓库，仅本地保留（含自己的 .git）
+vendor/
+
+# 运行期产物
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db

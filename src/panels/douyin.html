@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>抖音</title>
+<link rel="stylesheet" href="douyin.css" />
+</head>
+<body>
+  <header id="topbar">
+    <div id="brand">
+      <span id="logoMark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3z"/></svg>
+      </span>
+      <span id="wordmark">抖音</span>
+      <span id="brandDot" aria-hidden="true"></span>
+      <span id="subtitle"><span id="subtitleText">推荐</span></span>
+      <button id="backHomeBtn" class="hidden" type="button" title="返回推荐" aria-label="返回推荐">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9.8 3.4 5.2 8l4.6 4.6"/></svg>
+        返回推荐
+      </button>
+    </div>
+    <span class="grow"></span>
+    <div id="topActions">
+      <button id="searchBtn" class="icon-btn" type="button" title="搜索" aria-label="搜索">
+        <svg viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.2"/><path d="M10.3 10.3 13.4 13.4"/></svg>
+      </button>
+      <button id="refreshBtn" class="icon-btn" type="button" title="刷新" aria-label="刷新推荐">
+        <svg viewBox="0 0 16 16"><path d="M13 8a5 5 0 1 1-1.6-3.7M13 2.1v3.2H9.8"/></svg>
+      </button>
+      <button id="accountBtn" class="hidden" type="button" title="账号" aria-label="账号" aria-expanded="false">
+        <span id="accountFallback">我</span>
+        <img id="accountImg" class="hidden" alt="" referrerpolicy="no-referrer" />
+      </button>
+      <button id="loginBtn" class="tbtn" type="button">登录</button>
+    </div>
+  </header>
+
+  <main id="stage">
+    <div id="backdrop" aria-hidden="true"></div>
+    <video id="player" playsinline preload="auto"></video>
+    <video id="playerB" playsinline preload="auto" aria-hidden="true"></video>
+    <img id="imagePlayer" alt="" referrerpolicy="no-referrer" />
+    <img id="poster" alt="" aria-hidden="true" referrerpolicy="no-referrer" />
+    <div id="shade" aria-hidden="true"></div>
+    <div id="grain" aria-hidden="true"></div>
+
+    <div id="empty">正在准备抖音推荐...</div>
+
+    <div id="playOverlay" class="hidden" role="button" aria-label="播放">
+      <span class="play-disc" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7 4.6l8.2 5.4L7 15.4z"/></svg></span>
+      <span class="play-label">点按播放</span>
+    </div>
+
+    <div id="meta" class="hidden">
+      <div class="meta-kicker">NOW PLAYING</div>
+      <div id="author"></div>
+      <div id="desc"></div>
+      <div id="musicRow" class="hidden">
+        <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span id="musicText"></span>
+      </div>
+    </div>
+
+    <div id="side" class="hidden">
+      <button id="likeBtn" type="button" title="点赞" aria-label="点赞" aria-pressed="false">
+        <svg viewBox="0 0 24 24"><path d="M12 20.4S3.8 15.2 3.8 9.6A4.3 4.3 0 0 1 12 6.8a4.3 4.3 0 0 1 8.2 2.8c0 5.6-8.2 10.8-8.2 10.8z"/></svg>
+        <span id="likeCount" class="count">0</span>
+      </button>
+      <button id="collectBtn" type="button" title="收藏" aria-label="收藏" aria-pressed="false">
+        <svg viewBox="0 0 24 24"><path d="M6 3.5h12v17l-6-4.4-6 4.4z"/></svg>
+        <span id="collectCount" class="count">0</span>
+      </button>
+      <button id="commentBtn" type="button" title="评论" aria-label="评论" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.3 9.3 0 0 1-3.8-.8L3 21l1.7-5a8.2 8.2 0 0 1-.7-3.4A8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+        <span id="commentCount" class="count">0</span>
+      </button>
+      <button id="nextBtn" type="button" title="下一条" aria-label="下一条">
+        <svg viewBox="0 0 24 24"><path d="M6 9.5l6 6 6-6"/></svg>
+      </button>
+    </div>
+
+    <div id="progressWrap" class="hidden">
+      <div id="progressTrack"><div id="progressFill"></div></div>
+    </div>
+  </main>
+
+  <section id="searchPage" class="hidden" aria-label="搜索">
+    <header id="searchHead">
+      <button id="searchCancel" class="round-btn" type="button" aria-label="返回推荐">
+        <svg viewBox="0 0 20 20"><path d="M12.5 4.5 7 10l5.5 5.5"/></svg>
+      </button>
+      <form id="searchBar" role="search">
+        <label class="search-field">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.2"/><path d="M10.3 10.3 13.4 13.4"/></svg>
+          <input id="searchInput" type="search" placeholder="搜索视频、图集或话题" autocomplete="off" aria-label="搜索抖音" />
+        </label>
+        <button id="searchGo" type="submit">搜索</button>
+      </form>
+    </header>
+    <div id="searchMeta">
+      <span class="eyebrow">DISCOVER · 发现</span>
+      <span id="searchHint">输入关键词开始探索</span>
+    </div>
+    <div id="searchList"></div>
+  </section>
+
+  <section id="commentSheet" class="hidden" aria-label="评论">
+    <div class="sheet-grabber" aria-hidden="true"></div>
+    <header class="sheet-head">
+      <div class="sheet-heading">
+        <span class="eyebrow">DISCUSSION</span>
+        <span id="commentTitle">评论</span>
+      </div>
+      <button id="commentClose" class="sheet-close" type="button" aria-label="关闭评论">
+        <svg viewBox="0 0 20 20"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9"/></svg>
+      </button>
+    </header>
+    <div id="commentList"></div>
+  </section>
+
+  <section id="accountSheet" class="hidden" aria-label="账号">
+    <header class="account-head">
+      <span class="eyebrow">ACCOUNT · 账号</span>
+      <button id="accountClose" class="sheet-close" type="button" aria-label="关闭账号面板">
+        <svg viewBox="0 0 20 20"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9"/></svg>
+      </button>
+    </header>
+    <div id="accountBody">
+      <div class="acc-row">
+        <div class="acc-avatar">
+          <span id="accAvatarFallback">我</span>
+          <img id="accAvatar" class="hidden" alt="" referrerpolicy="no-referrer" />
+        </div>
+        <div class="acc-text">
+          <div id="accName">已登录</div>
+          <div id="accUid" class="acc-sub">登录态已保存在本机</div>
+        </div>
+      </div>
+      <div class="acc-actions">
+        <button id="reloginBtn" class="hidden" type="button">重新登录</button>
+        <button id="logoutBtn" type="button">退出登录</button>
+      </div>
+      <p class="acc-note">退出后推荐会恢复为未登录内容，可随时重新扫码登录。</p>
+    </div>
+  </section>
+
+  <div id="scrim" aria-hidden="true"></div>
+  <div id="status" role="status" aria-live="polite"></div>
+
+  <script src="douyin.js"></script>
+</body>
+</html>

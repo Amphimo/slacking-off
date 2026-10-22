@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>小黑盒</title>
+<link rel="stylesheet" href="xhh.css" />
+</head>
+<body>
+  <header id="topbar">
+    <span id="logo">小黑盒</span>
+    <span style="flex:1"></span>
+    <button id="meBtn" class="tbtn hidden">我的</button>
+    <button id="loginBtn" class="tbtn">登录</button>
+  </header>
+
+  <div id="list"></div>
+
+  <button id="refreshBtn" title="刷新">
+    <svg viewBox="0 0 16 16"><path d="M13 8a5 5 0 1 1-1.6-3.7M13 2v3h-3"/></svg>
+  </button>
+
+  <div id="detail" class="hidden">
+    <header id="detailBar">
+      <button id="backBtn"><svg viewBox="0 0 16 16"><path d="M10 3L5 8l5 5"/></svg></button>
+      <span>帖子</span>
+      <a id="extLink" target="_blank" rel="noreferrer" title="在浏览器打开原帖看评论">
+        <svg viewBox="0 0 16 16"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg>
+      </a>
+    </header>
+    <article id="detailBody"></article>
+  </div>
+
+  <div id="mePage" class="hidden">
+    <header id="meBar">
+      <button id="meBack"><svg viewBox="0 0 16 16"><path d="M10 3L5 8l5 5"/></svg></button>
+      <span id="meTitle">我的</span>
+      <button id="logoutBtn" class="tbtn">退出</button>
+    </header>
+    <div id="meTabs">
+      <button class="mtab active" data-tab="fav">收藏</button>
+      <button class="mtab" data-tab="msg">消息</button>
+    </div>
+    <div id="meBody"></div>
+  </div>
+
+  <div id="loginLayer" class="hidden">
+    <div id="loginCard">
+      <h3>扫码登录</h3>
+      <div id="qrBox"><div class="spin"></div></div>
+      <p id="loginMsg">正在获取二维码...</p>
+      <button id="loginClose" class="tbtn">关闭</button>
+    </div>
+  </div>
+
+  <div id="imgViewer" class="hidden"></div>
+  <div id="status"></div>
+  <script src="xhh.js"></script>
+</body>
+</html>

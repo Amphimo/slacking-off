@@ -1,0 +1,84 @@
+:root {
+  --bg: #141417;
+  --bg-soft: #1d1d22;
+  --line: #2c2c33;
+  --fg: #e8e8ea;
+  --fg-dim: #8b8b93;
+  --accent: #7f77dd;
+  --bar-h: 38px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font: 13px/1.5 -apple-system, "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+  user-select: none;
+}
+
+#titlebar {
+  height: var(--bar-h);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 6px;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+  -webkit-app-region: drag;
+}
+
+#tabs { display: flex; gap: 2px; -webkit-app-region: no-drag; }
+
+.tab {
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--fg-dim);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.tab:hover { background: #26262d; color: var(--fg); }
+.tab.active { background: var(--accent); color: #fff; }
+
+.spacer { flex: 1; }
+#winbtn { display: flex; gap: 2px; -webkit-app-region: no-drag; }
+
+.ic {
+  width: 26px; height: 26px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 0; border-radius: 6px;
+  background: transparent; cursor: pointer;
+}
+.ic svg { width: 14px; height: 14px; fill: none; stroke: var(--fg-dim); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.ic:hover { background: #26262d; }
+.ic:hover svg { stroke: var(--fg); }
+.ic.on { background: #2f2b55; }
+.ic.on svg { stroke: var(--accent); }
+.ic.danger:hover { background: #4a1d1d; }
+.ic.danger:hover svg { stroke: #f09595; }
+
+#stage { height: calc(100% - var(--bar-h) * 2); background: #0d0d0f; position: relative; }
+#stage webview { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #fff; }
+#stage webview[hidden] { display: none; }
+
+#toolbar {
+  height: var(--bar-h);
+  display: flex; align-items: center; gap: 2px;
+  padding: 0 6px;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+}
+.sep { width: 1px; height: 16px; background: var(--line); margin: 0 4px; }
+
+#hint {
+  position: absolute; left: 0; right: 0; bottom: calc(var(--bar-h) + 8px);
+  text-align: center; font-size: 11px; color: var(--fg-dim);
+  pointer-events: none; opacity: 0; transition: opacity .35s;
+}
+#hint.show { opacity: .85; }

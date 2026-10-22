@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>摸鱼小窗</title>
+<link rel="stylesheet" href="shell.css" />
+</head>
+<body>
+  <header id="titlebar">
+    <div id="tabs"></div>
+    <div class="spacer"></div>
+    <div id="winbtn">
+      <button class="ic" data-act="min" title="最小化" aria-label="最小化">
+        <svg viewBox="0 0 16 16"><path d="M3 8h10" /></svg>
+      </button>
+      <button class="ic danger" data-act="close" title="关闭 (Ctrl+Alt+M 可隐身)" aria-label="关闭">
+        <svg viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8" /></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="stage"></main>
+
+  <footer id="toolbar">
+    <button class="ic" data-act="back" title="后退"><svg viewBox="0 0 16 16"><path d="M10 3L5 8l5 5"/></svg></button>
+    <button class="ic" data-act="reload" title="刷新"><svg viewBox="0 0 16 16"><path d="M13 8a5 5 0 1 1-1.6-3.7M13 2v3h-3"/></svg></button>
+    <span class="sep"></span>
+    <button class="ic" data-act="narrow" title="视口变窄（内容变大）"><svg viewBox="0 0 16 16"><path d="M4 8h8"/></svg></button>
+    <button class="ic" data-act="wider" title="视口变宽（内容变小）"><svg viewBox="0 0 16 16"><path d="M4 8h8M8 4v8"/></svg></button>
+    <span class="sep"></span>
+    <button class="ic" data-act="declutter" title="隐藏下载提示浮条"><svg viewBox="0 0 16 16"><path d="M3 5h10M4 8h8M6 11h4"/></svg></button>
+    <button class="ic" data-act="top" id="btnTop" title="窗口置顶"><svg viewBox="0 0 16 16"><path d="M8 2l4 5H4zM8 14V9"/></svg></button>
+    <button class="ic" data-act="fade" title="降低不透明度 / 循环"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5"/><path d="M8 3v10"/></svg></button>
+    <button class="ic" data-act="reset" title="清空登录态并重开"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></button>
+  </footer>
+
+  <div id="hint">Ctrl + Alt + M 快速隐藏 / 呼出</div>
+  <script src="shell.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+{
+  "name": "slacking-off",
+  "version": "0.1.0",
+  "private": true,
+  "description": "桌面摸鱼小窗口：以手机视口刷抖音 / 小红书 / B站 / 小黑盒",
+  "author": "slacking-off contributors",
+  "license": "MIT",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "pack": "electron-builder --win --dir",
+    "dist": "electron-builder --win --publish never",
+    "dist:publish": "electron-builder --win --publish always"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^26.15.3"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "build": {
+    "appId": "com.slackingoff.moyu",
+    "productName": "摸鱼小窗",
+    "executableName": "slacking-off",
+    "copyright": "Copyright © 2026 slacking-off contributors",
+    "asar": true,
+    "electronDist": "node_modules/electron/dist",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "package.json",
+      "!**/node_modules/**",
+      "node_modules/qrcode/**",
+      "node_modules/pngjs/**",
+      "node_modules/dijkstrajs/**",
+      "!**/node_modules/**/coverage/**",
+      "!**/node_modules/**/test/**",
+      "!**/node_modules/**/tests/**",
+      "!**/node_modules/**/{bin,helper,dist,example,examples,doc,docs}/**",
+      "!**/node_modules/**/*.md",
+      "!**/node_modules/pngjs/browser.js",
+      "!**/node_modules/**/{.eslintrc*,.eslintignore,.prettierignore,.travis.yml,tsconfig.json}"
+    ],
+    "electronLanguages": [
+      "zh-CN",
+      "en-US"
+    ],
+    "extraResources": [
+      "LICENSE",
+      "THIRD-PARTY-NOTICES.md"
+    ],
+    "win": {
+      "icon": "build/icon.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "slacking-off-${version}-win-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "摸鱼小窗",
+      "deleteAppDataOnUninstall": false,
+      "artifactName": "slacking-off-${version}-win-${arch}-setup.${ext}"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>B站</title>
+<link rel="stylesheet" href="bili.css" />
+</head>
+<body>
+  <header id="topbar">
+    <span id="logo">B站</span>
+    <span id="subtitle">推荐</span>
+    <span style="flex:1"></span>
+    <button id="searchBtn" title="搜索"><svg viewBox="0 0 16 16"><circle cx="7" cy="7" r="4"/><path d="M10.2 10.2L13 13"/></svg></button>
+    <button id="meBtn" class="tbtn hidden">我的</button>
+    <button id="loginBtn" class="tbtn">登录</button>
+  </header>
+
+  <form id="searchBar" class="hidden">
+    <input id="searchInput" type="search" placeholder="搜索 B站视频" autocomplete="off" />
+    <button id="searchGo" type="submit">搜索</button>
+    <button id="searchCancel" type="button">取消</button>
+  </form>
+
+  <div id="list"></div>
+
+  <button id="refreshBtn" title="刷新">
+    <svg viewBox="0 0 16 16"><path d="M13 8a5 5 0 1 1-1.6-3.7M13 2v3h-3"/></svg>
+  </button>
+
+  <div id="detail" class="hidden">
+    <header id="detailBar">
+      <button id="backBtn" title="返回"><svg viewBox="0 0 16 16"><path d="M10 3L5 8l5 5"/></svg></button>
+      <span>视频</span>
+      <a id="extLink" title="在浏览器打开">
+        <svg viewBox="0 0 16 16"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg>
+      </a>
+    </header>
+    <div id="detailBody"></div>
+  </div>
+
+  <div id="mePage" class="hidden">
+    <header id="meBar">
+      <button id="meBack" title="返回"><svg viewBox="0 0 16 16"><path d="M10 3L5 8l5 5"/></svg></button>
+      <span id="meTitle">我的</span>
+      <button id="logoutBtn" class="tbtn">退出</button>
+    </header>
+    <div id="meProfile"></div>
+    <div id="meBody"></div>
+  </div>
+
+  <div id="loginLayer" class="hidden">
+    <div id="loginCard">
+      <h3>扫码登录</h3>
+      <div id="qrBox"><div class="spin"></div></div>
+      <p id="loginMsg">正在获取二维码...</p>
+      <button id="loginClose" class="tbtn">关闭</button>
+    </div>
+  </div>
+
+  <div id="status"></div>
+  <script src="bili.js"></script>
+</body>
+</html>
