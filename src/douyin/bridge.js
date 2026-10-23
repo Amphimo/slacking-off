@@ -8,9 +8,11 @@
  * 请求和登录态都走 persist:moyu_douyin，与原来的抖音网页分区一致。
  */
 
+const path = require('node:path')
 const { BrowserWindow } = require('electron')
 
 const HOME_URL = 'https://www.douyin.com/?recommend=1'
+const APP_ICON = path.join(__dirname, '..', '..', 'build', 'icon.ico')
 
 // 只允许抖音自己的页面；登录页会挂在 passport/passport.douyin.com 等子域。
 const DOUYIN_HOST = /(^|\.)douyin\.com$/i
@@ -56,6 +58,7 @@ class DouyinBridge {
         height: 800,
         title: '抖音签名代理',
         autoHideMenuBar: true,
+        icon: APP_ICON,
         webPreferences: {
           session: this.session,
           contextIsolation: true,

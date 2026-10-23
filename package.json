@@ -1,6 +1,6 @@
 {
   "name": "slacking-off",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "桌面摸鱼小窗口：以手机视口刷抖音 / 小红书 / B站 / 小黑盒",
   "author": "slacking-off contributors",
@@ -33,6 +33,7 @@
     },
     "files": [
       "src/**/*",
+      "build/icon.ico",
       "package.json",
       "!**/node_modules/**",
       "node_modules/qrcode/**",
@@ -55,7 +56,7 @@
       "THIRD-PARTY-NOTICES.md"
     ],
     "win": {
-      "icon": "build/icon.png",
+      "icon": "build/icon.ico",
       "target": [
         {
           "target": "nsis",
