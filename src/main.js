@@ -81,6 +81,13 @@ const views = new Map() // site.id -> WebContentsView
 
 const sitePartition = (site) => `persist:moyu_${site.id}`
 
+// 抖音 CDN 对 Referer/UA 比 B站/小黑盒严格，媒体请求缺 Referer 会直接 403。
+const DOUYIN_MEDIA_HOST = /(^|\.)(douyinvod\.com|douyinpic\.com|byteimg\.com|bytecdn\.cn|zjcdn\.com|ixigua\.com)$/i
+
+function isDouyinMedia(raw) {
+  try { return DOUYIN_MEDIA_HOST.test(new URL(raw).hostname) } catch (_) { return false }
+}
+
 /**
  * 每个站点独立持久化 session：登录态隔离且长期保留。
  * UA 按站点设置：B站用移动 UA，小红书用桌面 UA（移动页会被降级成热门+下载 App 引导）。
@@ -97,6 +104,9 @@ function initSessions() {
         for (const key of Object.keys(headers)) {
           if (/^sec-ch-ua(-|$)/i.test(key)) delete headers[key]
         }
+      }
+      if (site.id === 'douyin' && isDouyinMedia(details.url)) {
+        headers.Referer = 'https://www.douyin.com/'
       }
       callback({ requestHeaders: headers })
     })
@@ -119,6 +129,7 @@ function getView(site) {
   const v = new WebContentsView({
     webPreferences: isPanel
       ? {
+          session: session.fromPartition(sitePartition(site)),
           preload: path.join(__dirname, 'preload-panel.js'),
           contextIsolation: true,
           sandbox: false,
